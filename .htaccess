@@ -1,0 +1,15 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteCond %{HTTP_REFERER} !^http://localhost|http://127.0.0.1 
+RewriteRule ^.*\.png|jpg|gif|css|js$ - [F]
+
+
+AuthName "Authentification!"
+AuthType Basic
+AuthUserFile "c:/xampp/htdocs/coffee/.htpasswd"
+Require valid-user
+
+RewriteRule ^(.*)_([a-z0-9]+)_([a-z0-9]+)_([0-9]+)\.html$ index.php?controller=$2&action=$3&id=$4 [L]
+RewriteRule ^(.*)_([a-z0-9]+)_([a-z0-9]+)_([0-9]+)_([a-zA-Z0-9\.]+)\.html$ index.php?controller=$2&action=$3&id=$4&photo_old=$5 [L]
+RewriteRule ^(.*)_([a-z1-9]+)_([a-z1-9]+)\.html$ index.php?controller=$2&action=$3 [L]
+RewriteRule ^(.*)\.html$ index.php [L]
