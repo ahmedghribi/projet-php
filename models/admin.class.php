@@ -14,7 +14,7 @@ $this->id = $id;
 $this->nom = $nom;
 $this->prenom = $prenom;
 $this->login = $login;
-$this->password = $password;
+$this->password = $this->password=crypt(md5($password),'dfgdfh46456fvdxdv');
 $this->role = $role;
 
 }
@@ -66,7 +66,7 @@ public function login($cnx){
 	if(is_object($admin)){
 		$_SESSION['login']=$this->login;
 		$_SESSION['password']=$this->password;
-		$_SESSION['role']=$this->role;
+		$_SESSION['role']=$admin->role;
 		$this->redirect("index.php");
 	}else{
 		$this->redirect("login.php?error=1");

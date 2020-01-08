@@ -54,15 +54,15 @@ if (isset($_REQUEST['action']))
 
       <!-- SEARCH FORM -->
       <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
+        <div class="input-group input-group-sm">
+          <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-navbar" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
@@ -208,43 +208,42 @@ if (isset($_REQUEST['action']))
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <?php if($_SESSION['role']==0){ ?>
-            
-              <li class="nav-item has-treeview">
-              <a href="dashboard_dashboard_index.html" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Tableau de Board
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-            </li>
-              <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Gestion des Familles
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="famille_famille_add1.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Ajouter Famille</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="famille_famille_liste.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>liste des Familles</p>
-                  </a>
-                </li>
+            <?php if ($_SESSION['role'] == 0) { ?>
 
-              </ul>
-            </li>
-              <?php } ?>
+              <li class="nav-item has-treeview">
+                <a href="dashboard_dashboard_index.html" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Tableau de Board
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Gestion des Familles
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="famille_famille_add1.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Ajouter Famille</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="famille_famille_liste.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>liste des Familles</p>
+                    </a>
+                  </li>
 
+                </ul>
+              </li>
+              
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -316,9 +315,9 @@ if (isset($_REQUEST['action']))
                     <i class="far fa-circle nav-icon"></i>
                     <p>Liste des Cients</p>
                   </a>
-                </li> 
-          </ul>
-          <li class="nav-item has-treeview">
+                </li>
+              </ul>
+            <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -338,13 +337,23 @@ if (isset($_REQUEST['action']))
                     <i class="far fa-circle nav-icon"></i>
                     <p>Liste Types Cients</p>
                   </a>
-                </li> 
-                </ul>  
-            
-                
-                
-          </ul>
+                </li>
+              </ul>
 
+
+
+          </ul>
+            <?php } ?>
+            <li class="nav-item has-treeview">
+                <a href="dashboard_dashboard_index.html" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>Vente
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+              </li>
+              
+        
         </nav>
         <!-- /.sidebar-menu -->
       </div>
@@ -355,21 +364,21 @@ if (isset($_REQUEST['action']))
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>La Gestion du Café ... Au Quotidien </h1>
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>La Gestion du Café ... Au Quotidien </h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">DataTables</li>
+              </ol>
+            </div>
           </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">DataTables</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-  
+        </div><!-- /.container-fluid -->
+      </section>
+
       <!-- Main content -->
       <section class="content">
         <div class="row">
@@ -386,7 +395,7 @@ if (isset($_REQUEST['action']))
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
- 
+
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Control sidebar content goes here -->
@@ -419,8 +428,6 @@ if (isset($_REQUEST['action']))
         "autoWidth": false
       });
     });
-
-
   </script>
 </body>
 

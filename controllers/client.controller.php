@@ -77,12 +77,15 @@ switch($action){
 	case "supp":$cl->supp($cnx);
 	break;
 	
-	case "liste":$clients=$cl->liste($cnx);
+	case "liste":
+		$clients=$cl->liste($cnx);
+		$typeclients=$cl->fk_type($cnx);
 	include "views/client/liste.php";
 	break;
 	
 	case "edit1":$clients=$cl->detail($cnx);
-	include "views/client/modifier_produit.php";
+	$typeclients=$cl->fk_type($cnx);
+	include "views/client/modifier_client.php";
 	break;
 	
 	case "edit":$cl->edit($cnx);

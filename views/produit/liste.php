@@ -3,13 +3,13 @@
 .grid-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  background-color: ;
-  border-style : ;
+  
+  
   padding: 2px;
   grid-auto-rows: 300px;
   grid-column-gap: 1px;
   grid-row-gap: 1px;
-  background: 
+  
   
   
 }
@@ -70,8 +70,8 @@ foreach ($produits as $resultat) {
         <div class="nested2 item"> TVA : '.$resultat->tva.'</div>';
   
   echo '<div class="butt item">
-  <a onclick="window.location.href=\'produit_produit_edit1_'.$resultat->id.'.html\'"><img src="images\icons\edit.png" width="30"</a>
-  <a onclick="window.location.href=\'produit_produit_supp_'.$resultat->id.'.html\'"><img src="images\icons\del.png" width="30"</a>
+  <a onclick="window.location.href=\'produit_produit_edit1_'.$resultat->id.'.html\'"><img src="images\icons\edit.png" width="30"></a>
+  <a onclick="window.location.href=\'produit_produit_supp_'.$resultat->id.'.html\'"><img src="images\icons\del.png" width="30"></a>
   </div></div>';
   
   /*
