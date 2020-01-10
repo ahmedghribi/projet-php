@@ -75,6 +75,13 @@ foreach ($produits as $resultat) {
   </div></div>';
   
   /*
+  <div class="grid-container">
+			<div class="wrap1">
+			<div class="phot item"><img src="img/' . $row['photo'] . '" height="100"></div>
+			<div class="item"> Nom :' . $row['nom'] . '</div>
+			<div class="nested1 item"> Prix : ' . $row['prix'] . ' Dt </div>
+			<div class="butt item">
+			</div></div>
     echo '<tr>';
     echo '<td><img src="img/'.$resultat->photo.'" width="100"></td>';
     echo '<td>'.$resultat->nom.'</td>';

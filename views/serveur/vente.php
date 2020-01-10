@@ -46,6 +46,7 @@
       grid-auto-rows: 100px;
       justify-content: center;
     }
+    
   </style>
 </head>
 
@@ -54,95 +55,108 @@
     <div class="row">
       <div class="col-3">TICKET</div>
       <div class="col-9">
-        <div class="heure">
-          <div id="div_horloge">
 
-            <script type="text/javascript">
-              window.onload = function() {
-                horloge('div_horloge');
-              };
+        <div id="div_horloge">
 
-              function horloge(el) {
-                if (typeof el == "string") {
-                  el = document.getElementById(el);
-                }
+          <script type="text/javascript">
+            window.onload = function() {
+              horloge('div_horloge');
+            };
 
-                function actualiser() {
-                  var date = new Date();
-                  var str = date.getHours();
-                  str += ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
-                  str += ':' + (date.getSeconds() < 10 ? '0' : '') + date.getSeconds();
-                  el.innerHTML = str;
-                }
-                actualiser();
-                setInterval(actualiser, 1000);
-              }
-            </script>
-          </div>
-        </div>
-        <div class="famille">Liste des Familles</div>
-        <div class="produits">Liste des Produits</div>
-            <!-- /.card-header -->
-            <div class="card-body">
-
-              <!-- <div class="table-responsive">
-<table class="table table-hover">
-<thead>
-<tr>
-    <th>Photo</th>
-    <th>Nom</th>
-    <th>id_famille</th>
-    <th>Prix</th>
-    <th>TVA</th>
-    <th colspan="2">Action</th>
-</tr>
-</thead>
--->
-              <?php
-              echo '<div class="grid-container">';
-              foreach ($produits as $resultat) {
-                echo '<div class="wrap1">';
-                echo '<div class="phot item"><img src="img/' . $resultat->photo . '" height="100"></div>';
-                echo '<div class="item"> Nom :' . $resultat->nom . '</div>';
-                echo '<div class="item"> Famille : ' . $resultat->id_famille . '</div>';
-                echo '
-        <div class="nested1 item"> Prix : ' . $resultat->prix . ' Dt </div>
-        <div class="nested2 item"> TVA : ' . $resultat->tva . '</div>';
-
-                echo '<div class="butt item">
-  <a onclick="window.location.href=\'produit_produit_edit1_' . $resultat->id . '.html\'"><img src="images\icons\edit.png" width="30"></a>
-  <a onclick="window.location.href=\'produit_produit_supp_' . $resultat->id . '.html\'"><img src="images\icons\del.png" width="30"></a>
-  </div></div>';
-
-                /*
-    echo '<tr>';
-    echo '<td><img src="img/'.$resultat->photo.'" width="100"></td>';
-    echo '<td>'.$resultat->nom.'</td>';
-    echo '<td>'.$resultat->id_famille.'</td>';
-    echo '<td>'.$resultat->prix.'</td>';
-    echo '<td>'.$resultat->tva.'</td>';
-     
-    echo '<td>';
-    echo '<input type="button" class="edit_btn" onclick="window.location.href=\'index.php?controller=produit&action=edit1&id='.$resultat->id.'\'" value="Edit">';
-    echo '</td> ';
-    echo '<td>';
-    echo '<input type="button" class="del_btn" onclick="window.location.href=\'index.php?controller=produit&action=supp&id='.$resultat->id.'\'" value="Supprimer">';
-    echo '</td>';
-    echo '</tr>'; 
-  */
+            function horloge(el) {
+              if (typeof el == "string") {
+                el = document.getElementById(el);
               }
 
-              ?>
-            </div>
+              function actualiser() {
+                var date = new Date();
+                var str = date.getHours();
+                str += ':' + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+                str += ':' + (date.getSeconds() < 10 ? '0' : '') + date.getSeconds();
+                el.innerHTML = str;
+              }
+              actualiser();
+              setInterval(actualiser, 1000);
+            }
+          </script>
 
-            </table>
-
-          </div>
-          <!-- /.card-body -->
         </div>
-        <!-- /.card -->
+        <div class="famille">
+          <div class="col-12">
+            <h1>Liste des Familles</h1>
+            <?php
+            foreach ($familles as $row) {
+            ?>
+
+              <label><input type="checkbox" class="common_selector nom" value="<?php echo $row->nom; ?>"> <?php echo $row->nom; ?></label>
+
+            <?php
+            }
+
+            ?>
+          </div>
+          <hr>
+          <?php  ?>
+        </div>
+        <div class="produits"> <h2  style="text-align: center"> Liste des Produits </h2></div>
+        <div class="row filter_data">
+
+        </div>
+
       </div>
+      <!-- /.card-body -->
     </div>
+    <!-- /.card -->
+  </div>
+  </div>
   </div>
   </div>
 </body>
+<style>
+#loading
+{
+	text-align:center; 
+	background: url('img/loader.gif') no-repeat center; 
+	height: 150px;
+}
+</style>
+
+<script>
+$(document).ready(function(){
+
+    filter_data(); 
+
+    function filter_data()
+    {
+        $('.filter_data').html('<div id="loading" style="" ></div>');
+        var action = 'fetch_data';
+        
+        var nom = get_filter('nom');
+        $.ajax({
+            url:"fetch_data.php",
+            method:"POST",
+            data:{action:action, nom:nom},
+            success:function(data){
+                $('.filter_data').html(data);
+            }
+        });
+    }
+
+
+    function get_filter(class_name)
+    {
+        var filter = [];
+        $('.'+class_name+':checked').each(function(){
+            filter.push($(this).val());
+        });
+        return filter;
+    }
+
+    $('.common_selector').click(function(){
+        filter_data();
+    });
+
+ 
+
+});
+</script>

@@ -87,5 +87,9 @@ switch($action){
 	
 	case "edit":$prod->edit($cnx);
 	break;
+	
+	case "serveur":$produits=$prod->liste($cnx);
+	include "serveur.php";
+	break;
 }
 ?>

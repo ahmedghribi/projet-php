@@ -63,10 +63,11 @@ public function detail($cnx){
 
 public function login($cnx){
 	$admin=$cnx->query("select * from admin where login='".$this->login."' and password='".$this->password."'")->fetch(PDO::FETCH_OBJ);
-	if(is_object($admin)){
+	if(is_object($admin) && ($this->login)){
 		$_SESSION['login']=$this->login;
 		$_SESSION['password']=$this->password;
 		$_SESSION['role']=$admin->role;
+		$_SESSION['nom']=$admin->nom;
 		$this->redirect("index.php");
 	}else{
 		$this->redirect("login.php?error=1");
